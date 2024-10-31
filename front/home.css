@@ -55,3 +55,16 @@ nav .btn-formulario:hover {
     color: #f0f0f0;
     text-align: justify;
 }
+
+.main-content{
+    @media (max-width: 768px) {
+        .main-content h1 {
+            font-size: 32px;
+        }
+        .main-content p {
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+    
+}

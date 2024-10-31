@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="perfil.css">
+    <title>Página de Perfil</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="perfil.html" class="active">Perfil</a></li>
+                <li><a href="formulario.html">Formulário</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="profile">
+            <h1>Perfil do Usuário</h1>
+            <div class="profile-info">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" placeholder="Digite seu nome" />
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Digite seu email" />
+                
+                <label for="password">Senha:</label>
+                <input type="password" id="password" placeholder="Digite sua senha" />
+
+                <div class="score">
+                    <label for="score">Pontuação:</label>
+                    <input type="text" id="score" disabled />
+                </div>
+                
+                <button id="save-btn">Salvar Alterações</button>
+            </div>
+        </section>
+    </main>
+    <script src="perfil.js"></script>
+</body>
+</html>
