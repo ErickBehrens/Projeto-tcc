@@ -25,16 +25,24 @@ button.onclick = async function () {
 
   // Converte a resposta do servidor em um objeto JSON
   const content = await response.json();
-
+  
   // Exibe o conteúdo da resposta do servidor no console
-  console.log(content);
+  console.log("Resposta do servidor:", content);
 
   // Verifica se o login foi realizado com sucesso
   if (content.success) {
+    // Acessa os dados retornados pelo servidor
+    let userData = content.data[0];  // O banco retorna um array, pegamos o primeiro item
+
+    // O ID do usuário está dentro de userData
+    let userId = userData.id;  // Acessando o ID do usuário
+
+    console.log("ID do usuário:", userId);
+
     // Exibe uma mensagem de sucesso no console
     console.log("Login realizado com sucesso!");
 
-    // Redireciona o usuário para a página "home.html"
+    // Exemplo de redirecionamento para a página home
     window.location.href = "../front/home.html";
   } else {
     // Exibe uma mensagem de erro no console

@@ -61,12 +61,5 @@ const { storeUser } = require('../controller/userController');
 // Define uma rota POST para o endpoint /user/create
 router.post('/user/create', storeUser);
 
-// Endpoint para obter o perfil
-router.get('/profile', getUserProfile);
-
-// Endpoint para atualizar o perfil
-router.put('/profile', updateUserProfile);
-
-
 // Exporta o router para que possa ser utilizado em outros módulos
 module.exports = router;

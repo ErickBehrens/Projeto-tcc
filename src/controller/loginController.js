@@ -10,10 +10,11 @@ async function login(request, response) {
   );
 
   // Query SQL para selecionar o nome, senha, id e data de criação do usuário com o email e senha informados
-  const query = "SELECT name, password, id, created_at FROM users WHERE email = ? and password = ?";
+  const query = "SELECT * FROM users WHERE email = ? and password = ?";
 
   // Executa a query SQL com os parâmetros informados
   connection.query(query, params, (err, results) => {
+    console.log(results);
     // Verifica se houve resultados e se não houve erros
     if (results.length > 0 && results) {
       // Retorna uma resposta HTTP 200 com um objeto JSON contendo informações de sucesso

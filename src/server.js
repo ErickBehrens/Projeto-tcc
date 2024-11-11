@@ -1,11 +1,4 @@
-// Importa o módulo Express.js
-const express = require('express');
-
-// Importa o módulo CORS para habilitar o Cross-Origin Resource Sharing
-const cors = require('cors');
-
-// Carrega as variáveis de ambiente do arquivo .env
-require('dotenv').config();
+const app = require('./app')
 
 // Importa Swagger para documentação da API
 const swaggerUi = require('swagger-ui-express');
@@ -29,9 +22,6 @@ const swaggerOptions = {
   apis: [`${__dirname}/routes/*.js`], // Caminho para as rotas que serão documentadas
 };
 
-// Cria a aplicação Express
-const app = express();
-
 // Define a porta onde o servidor irá rodar (da variável de ambiente ou padrão 1903)
 const port = process.env.PORT || 1903;
 
@@ -43,12 +33,6 @@ const swaggerDocs = swaggerJsDoc(swaggerOptions);
 
 // Define a rota para exibir a documentação da API (Swagger)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-// Habilita o uso do CORS
-app.use(cors());
-
-// Habilita o uso de JSON nas requisições
-app.use(express.json());
 
 // Define as rotas para a API de tarefas
 app.use('/api', taskRouter);
