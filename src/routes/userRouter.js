@@ -5,7 +5,7 @@ const { Router } = require('express');
 const router = Router();
 
 // Importa a função storeUser do arquivo userController.js
-const { storeUser } = require('../controller/userController');
+const userController = require("../controller/userController");
 
 /**
  * @swagger
@@ -59,7 +59,16 @@ const { storeUser } = require('../controller/userController');
  */
 
 // Define uma rota POST para o endpoint /user/create
-router.post('/user/create', storeUser);
+router.post('/user/create', userController.storeUser);
+
+// Rota para buscar perfil do usuário
+router.get("/:id", userController.getUserProfile);
+
+// Rota para atualizar perfil do usuário
+router.put("/:id", userController.updateUserProfile);
+
+// Rota para cadastrar um novo usuário
+router.post("/", userController.storeUser);
 
 // Exporta o router para que possa ser utilizado em outros módulos
 module.exports = router;
