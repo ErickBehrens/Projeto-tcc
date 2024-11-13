@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch(`/api/users/${userId}`);
             if (response.ok) {
                 const userData = await response.json();
-                nameInput.value = userData.name;
-                emailInput.value = userData.email;
-                scoreInput.value = userData.score; // Pontuação obtida do banco
+                nameInput.value = userData.name || ''; // Preenche o campo com o nome
+                emailInput.value = userData.email || ''; // Preenche o campo com o email
+                scoreInput.value = userData.score || 0; // Preenche o campo com a pontuação
             } else {
                 console.error("Erro ao carregar dados do perfil");
             }
