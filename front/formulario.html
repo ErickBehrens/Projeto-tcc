@@ -5,65 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Pontuação</title>
     <link rel="stylesheet" href="formulario.css">
-
 </head>
 <body>
     <div class="page">
         <h1>Descubra seu nível de vício</h1>
         <form id="quizForm">
-            <div class="question">
-                <p>1. Quantas horas por dia você normalmente joga videogames?</p>
-                <label><input type="radio" name="question1" value="1"> Menos de 1 hora</label>
-                <label><input type="radio" name="question1" value="2"> 1 a 2 horas</label>
-                <label><input type="radio" name="question1" value="3"> 2 a 3 horas</label>
-                <label><input type="radio" name="question1" value="4"> Mais de 3 horas</label>
+            <div class="question active" id="question1">
+                <p>1. Você sente vontade de jogar videogames o tempo todo, mesmo quando está fazendo outras atividades?</p>
+                <div>
+                    <label><input type="radio" name="question1" value="1"> Não, nunca sinto vontade de jogar em outras situações.</label><br>
+                    <label><input type="radio" name="question1" value="2"> Às vezes penso nos jogos, mas consigo me concentrar em outras atividades.</label><br>
+                    <label><input type="radio" name="question1" value="3"> Frequentemente me pego pensando nos jogos durante outras atividades.</label><br>
+                    <label><input type="radio" name="question1" value="4"> Sim, é quase impossível tirar os jogos da minha cabeça, mesmo em momentos importantes.</label><br>
+                </div>
+                <button type="button" class="btn-primary" onclick="nextQuestion(1)">Próxima</button>
             </div>
-        <div class="question">
-            <p>2. Quantos dias por semana você joga videogames?</p>
-            <label><input type="radio" name="question2" value="1"> 1 a 2 dias</label>
-            <label><input type="radio" name="question2" value="2"> 3 a 4 dias</label>
-            <label><input type="radio" name="question2" value="3"> 5 a 6 dias</label>
-            <label><input type="radio" name="question2" value="4"> Todos os dias</label>
-        </div>
-        <div class="question">
-            <p>3. Você costuma jogar videogames por períodos consecutivos de quantas horas?</p>
-            <label><input type="radio" name="question3" value="1"> Menos de 1 hora</label>
-            <label><input type="radio" name="question3" value="2"> 1 a 2 horas</label>
-            <label><input type="radio" name="question3" value="3"> 2 a 3 horas</label>
-            <label><input type="radio" name="question3" value="4"> Mais de 3 horas</label>
-        </div>
-        <div class="question">
-            <p>4. Quantas vezes por semana você joga videogames por mais de 3 horas seguidas?</p>
-            <label><input type="radio" name="question4" value="1"> Nunca</label>
-            <label><input type="radio" name="question4" value="3"> Raramente</label>
-            <label><input type="radio" name="question4" value="2"> Algumas vezes</label>
-            <label><input type="radio" name="question4" value="4"> Frequentemente</label>
-        </div>
-        <div class="question">
-            <p>5. Qual é a principal razão pela qual você joga videogames?</p>
-            <label><input type="radio" name="question5" value="1"> Relaxamento e diversão</label>
-            <label><input type="radio" name="question5" value="2"> Socialização com amigos</label>
-            <label><input type="radio" name="question5" value="3"> Competição e melhorar habilidades</label>
-            <label><input type="radio" name="question5" value="4"> Fugir de problemas ou estresse</label>
-        </div>
-        <div class="question">
-            <p>6. Você sente que jogar videogames afeta seu sono?</p>
-            <label><input type="radio" name="question6" value="1"> Nunca</label>
-            <label><input type="radio" name="question6" value="2"> Raramente</label>
-            <label><input type="radio" name="question6" value="3"> Algumas vezes</label>
-            <label><input type="radio" name="question6" value="4"> Frequentemente</label>
-        </div>
-        <div class="question">
-            <p>7. Você percebe que fica ansioso ou irritado quando não pode jogar videogames?</p>
-            <label><input type="radio" name="question7" value="1"> Nunca</label>
-            <label><input type="radio" name="question7" value="2"> Raramente</label>
-            <label><input type="radio" name="question7" value="3"> Algumas vezes</label>
-            <label><input type="radio" name="question7" value="4"> Frequentemente</label>
-        </div>
-        <div><button type="button" class="btn-primary" id="handleSubmit">Enviar</button></div>
-    </form>
-    <p id="result"></p>
-</div>
-<script src="formulario.js"></script>
+            
+            <div class="question" id="question2">
+                <p>2. Você já tentou reduzir o tempo gasto com videogames, mas não conseguiu?</p>
+                <label><input type="radio" name="question2" value="1"> Nunca precisei reduzir, pois jogo pouco e consigo controlar.</label><br>
+                <label><input type="radio" name="question2" value="2"> Já tentei uma vez, mas foi fácil me controlar.</label><br>
+                <label><input type="radio" name="question2" value="3"> Tentei várias vezes e consegui diminuir o tempo só por pouco tempo.</label><br>
+                <label><input type="radio" name="question2" value="4"> Sim, sempre que tento reduzir, sinto que não consigo e volto a jogar muito.</label><br>
+                <button type="button" class="btn-primary" onclick="nextQuestion(2)">Próxima</button>
+            </div>
+            
+            <div class="question" id="question3">
+                <p>3. Você sente irritação ou ansiedade quando não pode jogar videogames?</p>
+                <label><input type="radio" name="question3" value="1"> Não sinto nada se não jogo, fico bem.</label><br>
+                <label><input type="radio" name="question3" value="2"> Às vezes, fico um pouco ansioso, mas consigo me distrair.</label><br>
+                <label><input type="radio" name="question3" value="3"> Frequentemente fico ansioso ou irritado quando não posso jogar.</label><br>
+                <label><input type="radio" name="question3" value="4"> Sim, fico muito irritado ou ansioso, o que afeta meu dia todo.</label><br>
+                <button type="button" class="btn-primary" onclick="nextQuestion(3)">Próxima</button>
+            </div>
+            
+            <div class="question" id="question4">
+                <p>4. Você já deixou de fazer suas obrigações (escola, trabalho, compromissos) por causa dos videogames?</p>
+                <label><input type="radio" name="question4" value="1"> Nunca deixei de cumprir minhas obrigações.</label><br>
+                <label><input type="radio" name="question4" value="2"> Raramente, uma ou duas vezes, mas foi sem impacto negativo.</label><br>
+                <label><input type="radio" name="question4" value="3"> Frequentemente deixo tarefas incompletas para jogar.</label><br>
+                <label><input type="radio" name="question4" value="4"> Sim, tenho dificuldade em realizar minhas obrigações por causa dos jogos.</label><br>
+                <button type="button" class="btn-primary" onclick="nextQuestion(4)">Próxima</button>
+            </div>
+            
+            <div class="question" id="question5">
+                <p>5. Você joga videogames para esquecer problemas ou se sentir melhor?</p>
+                <label><input type="radio" name="question5" value="1"> Não, jogo apenas por diversão, sem relação com meus problemas.</label><br>
+                <label><input type="radio" name="question5" value="2"> Às vezes jogo quando me sinto entediado, mas sem motivos emocionais.</label><br>
+                <label><input type="radio" name="question5" value="3"> Frequentemente jogo para me afastar dos problemas e me sentir melhor.</label><br>
+                <label><input type="radio" name="question5" value="4"> Sim, uso os jogos como fuga dos problemas ou emoções negativas.</label><br>
+                <button type="button" class="btn-primary" onclick="nextQuestion(5)">Próxima</button>
+            </div>
+            
+            <div class="question" id="question6">
+                <p>6. Você passa cada vez mais tempo jogando para sentir o mesmo nível de satisfação?</p>
+                <label><input type="radio" name="question6" value="1"> Não, meu tempo de jogo é sempre o mesmo e satisfatório.</label><br>
+                <label><input type="radio" name="question6" value="2"> Às vezes jogo um pouco mais, mas consigo parar facilmente.</label><br>
+                <label><input type="radio" name="question6" value="3"> Frequentemente sinto que preciso jogar mais para me divertir.</label><br>
+                <label><input type="radio" name="question6" value="4"> Sim, jogo cada vez mais para alcançar a mesma diversão de antes.</label><br>
+                <button type="button" class="btn-primary" onclick="nextQuestion(6)">Próxima</button>
+            </div>
+            
+            <div class="question" id="question7">
+                <p>7. As pessoas ao seu redor (amigos, família) já comentaram que você joga videogames demais?</p>
+                <label><input type="radio" name="question7" value="1"> Não, ninguém nunca comentou sobre o tempo que passo jogando.</label><br>
+                <label><input type="radio" name="question7" value="2"> Raramente comentam, e não parece ser um problema para eles.</label><br>
+                <label><input type="radio" name="question7" value="3"> Frequentemente comentam que eu deveria jogar menos.</label><br>
+                <label><input type="radio" name="question7" value="4"> Sim, as pessoas frequentemente estão preocupadas com meu tempo de jogo.</label><br>
+                <button type="button" class="btn-primary" onclick="nextQuestion(7)">Próxima</button>
+            </div>
+            
+            <div class="question" id="question8">
+                <p>8. Você já preferiu jogar videogames a estar com amigos ou familiares?</p>
+                <label><input type="radio" name="question8" value="1"> Não, prefiro estar com pessoas a jogar.</label><br>
+                <label><input type="radio" name="question8" value="2"> Às vezes prefiro jogar, mas sem problemas para sair com amigos.</label><br>
+                <label><input type="radio" name="question8" value="3"> Frequentemente escolho jogar em vez de estar com outras pessoas.</label><br>
+                <label><input type="radio" name="question8" value="4"> Sim, quase sempre prefiro jogar sozinho do que estar com amigos ou familiares.</label><br>
+                <button type="button" class="btn-primary" onclick="submitQuiz()">Enviar</button>
+            </div>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script src="formulario.js"></script>
 </body>
 </html>
