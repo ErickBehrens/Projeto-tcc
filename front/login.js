@@ -37,6 +37,9 @@ button.onclick = async function () {
     // O ID do usuário está dentro de userData
     let userId = userData.id;  // Acessando o ID do usuário
 
+    // Armazenar o ID do usuário no localStorage
+    localStorage.setItem("userId", userId);
+
     console.log("ID do usuário:", userId);
 
     // Exibe uma mensagem de sucesso no console

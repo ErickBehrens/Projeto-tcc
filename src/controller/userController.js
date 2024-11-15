@@ -23,8 +23,8 @@ async function storeUser (request, response) {
 }
 
 async function getUserProfile(request, response) {
-    const userId = request.params.id;
-    const query = "SELECT name, email, score FROM users WHERE id = ?";
+    const userId = request.params.id; // Obtém o ID do usuário da URL
+    const query = "SELECT name, email FROM users WHERE id = ?"; // Ajuste a query conforme necessário
 
     connection.query(query, [userId], (err, results) => {
         if (err) {
@@ -35,7 +35,7 @@ async function getUserProfile(request, response) {
             });
         }
         if (results.length > 0) {
-            return response.status(200).json(results[0]);
+            return response.status(200).json(results[0]); // Retorna os dados do usuário
         } else {
             return response.status(404).json({
                 success: false,
@@ -45,28 +45,7 @@ async function getUserProfile(request, response) {
     });
 }
 
-async function updateUserProfile(request, response) {
-    const userId = request.params.id;
-    const { name, email, password } = request.body;
-    const query = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
-
-    connection.query(query, [name, email, password, userId], (err, results) => {
-        if (err) {
-            console.error("Erro ao atualizar perfil do usuário:", err);
-            return response.status(400).json({
-                success: false,
-                message: "Erro ao atualizar perfil do usuário"
-            });
-        }
-        return response.status(200).json({
-            success: true,
-            message: "Perfil atualizado com sucesso"
-        });
-    });
-}
-
 module.exports = {
     storeUser ,
-    getUserProfile,
-    updateUserProfile
+    getUserProfile
 };

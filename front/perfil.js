@@ -1,54 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const userId = "ID_DO_USUARIO";  // Substitua por uma forma de obter o ID do usuário logado
-    const nameInput = document.getElementById("name");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const scoreInput = document.getElementById("score");
-    const saveButton = document.getElementById("save-btn");
+    const userId = localStorage.getItem("userId"); // Obtém o ID do usuário do localStorage
+    const nameSpan = document.getElementById("name");
+    const emailSpan = document.getElementById("email");
 
     // Carregar informações do perfil do usuário ao abrir a página
     async function loadProfile() {
+        if (!userId) {
+            console.error("ID do usuário não encontrado.");
+            return; // Ou redirecione para a página de login
+        }
+
         try {
             const response = await fetch(`/api/users/${userId}`);
-            if (response.ok) {
-                const userData = await response.json();
-                nameInput.value = userData.name || ''; // Preenche o campo com o nome
-                emailInput.value = userData.email || ''; // Preenche o campo com o email
-                scoreInput.value = userData.score || 0; // Preenche o campo com a pontuação
-            } else {
-                console.error("Erro ao carregar dados do perfil");
+            if (!response.ok) {
+                throw new Error(`Erro na resposta: ${response.status} ${response.statusText}`);
             }
+            const userData = await response.json();
+            nameSpan.textContent = userData.name || ''; // Preenche o campo com o nome
+            emailSpan.textContent = userData.email || ''; // Preenche o campo com o email
         } catch (error) {
             console.error("Erro na requisição:", error);
         }
     }
 
-    // Salvar alterações no perfil do usuário
-    saveButton.addEventListener("click", async () => {
-        const updatedData = {
-            name: nameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value
-        };
-
-        try {
-            const response = await fetch(`/api/users/${userId}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(updatedData)
-            });
-            if (response.ok) {
-                alert("Perfil atualizado com sucesso!");
-                loadProfile(); // Atualiza os campos
-            } else {
-                alert("Erro ao salvar alterações.");
-            }
-        } catch (error) {
-            console.error("Erro na requisição:", error);
-        }
-    });
-
+    // Chama a função para carregar o perfil
     loadProfile(); // Carrega as informações do usuário ao iniciar
 });

@@ -64,11 +64,5 @@ router.post('/user/create', userController.storeUser);
 // Rota para buscar perfil do usuário
 router.get("/:id", userController.getUserProfile);
 
-// Rota para atualizar perfil do usuário
-router.put("/:id", userController.updateUserProfile);
-
-// Rota para cadastrar um novo usuário
-router.post("/", userController.storeUser);
-
 // Exporta o router para que possa ser utilizado em outros módulos
 module.exports = router;
