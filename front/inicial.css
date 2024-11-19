@@ -17,7 +17,7 @@ body {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Alinha os links à direita */
+    justify-content: flex-end; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
@@ -28,28 +28,28 @@ body {
     width: 90%;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-end; /* Alinha os links à direita */
+    justify-content: flex-end; 
     align-items: center;
 }
 
 .login-btn {
-    background-color: #444; /* Alterado para cinza claro */
+    background-color: #444; 
     color: #f0f0f0;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 50px; /* Adicionei isso para tornar o botão redondo */
-    margin-left: 97%; /* Adicionei isso para empurrar o botão para a direita */
+    border-radius: 50px; 
+    margin-left: 97%; 
 }   
 
 .login-btn:hover {
-    background-color: #555; /* Alterado para cinza claro escuro */
+    background-color: #555; 
 }
 
 .main-content {
     display: flex;
-    flex-direction: column; /* Adicionei isso para alinhar o título e o parágrafo */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     height: 80vh; 
@@ -67,20 +67,20 @@ body {
     line-height: 1.6;
     color: #f0f0f0;
     text-align: justify;
-    max-width: 800px; /* Adicionei isso para limitar a largura do parágrafo */
+    max-width: 800px; 
 }
 
 .cadastro-btn {
-    background-color: #444; /* Alterado para cinza claro */
+    background-color: #444; 
     color: #f0f0f0;
     border: none;
     padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
-    border-radius: 50px; /* Adicionei isso para tornar o botão redondo */
+    border-radius: 50px; 
     margin-top: 20px;
 }
 
 .cadastro-btn:hover {
-    background-color: #555; /* Alterado para cinza claro escuro */
+    background-color: #555; 
 }

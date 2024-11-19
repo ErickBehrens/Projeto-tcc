@@ -1,9 +1,5 @@
 // Importa o módulo Express.js
 const express = require('express');
-
-// Importa o módulo dotenv para carregar variáveis de ambiente
-const dotenv = require('dotenv');
-
 // Importa o módulo cors para habilitar o CORS (Cross-Origin Resource Sharing)
 const cors = require('cors');
 

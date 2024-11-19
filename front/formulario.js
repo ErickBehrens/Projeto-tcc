@@ -1,4 +1,5 @@
 let currentQuestion = 1;
+const enviar = document.getElementById('enviar')
 
 function nextQuestion(questionNumber) {
     const selectedOption = document.querySelector(`input[name="question${questionNumber}"]:checked`);
@@ -20,25 +21,37 @@ function nextQuestion(questionNumber) {
     }
 }
 
-async function submitQuiz() {
+enviar.addEventListener('click', async function enviarForms(event){
+    event.preventDefault()
     const form = document.getElementById('quizForm');
     const formData = new FormData(form);
-    let pontos = 0;
+    let user_id = localStorage.getItem("userId"); // Obtém o ID do usuário do localStorage
+    let pontuacao = 0;
 
     formData.forEach((value) => {
-        pontos += parseInt(value);
+        pontuacao += parseInt(value);
     });
 
-    const data = { pontos };
+    const data = { pontuacao,user_id };
 
-    await fetch('http://localhost:3001/api/store/gamemind', {
+    const response = await fetch('http://localhost:3001/api/store/gamemind', {
         method: 'POST',
         headers: { "Content-type": "application/json;charset=UTF-8" },
         body: JSON.stringify(data)
     });
 
-    window.location.href = `resultado.html?pontos=${pontos}`;
-}
+    let content = await response.json()
+    
+    console.log(content)
+    console.log(data)
+    
+    if(content.success) {
+        window.location.href = `resultado.html?pontos=${pontuacao}`;
+        console.log('deu bom')
+    } else {
+        console.log('deu ruim')
+    }
+}) 
 
 // Inicializa a primeira pergunta
 document.getElementById(`question${currentQuestion}`).classList.add('active');

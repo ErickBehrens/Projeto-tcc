@@ -2,56 +2,73 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(to right, #2c2c2c, #1a1a1a);
-    color: #f0f0f0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-    height: 90vh;
-    width: 191.5vh;
+    background: linear-gradient(to right, #2c2c2c, #1a1a1a); /* Cor de fundo como antes */
+    color: #f0f0f0; /* Cor do texto */
 }
 
+
+
 nav {
-    width: 100%;
-    background-color: #333333; 
-    padding: 10px 20px;
+    width: 194.9vh; /* Garante que a navbar ocupe 100% da largura */
+    background-color: #333333; /* Cor de fundo da navbar */
+    padding: 10px 20px; /* Ajuste o padding conforme necessário */
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    justify-content: space-between; /* Mantém GameMind à esquerda e os botões à direita */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra da navbar */
 }
 
 nav h1 {
-    font-size: 24px;
-    color: #f0f0f0;
-    margin: 0;
+    font-size: 24px; /* Ajuste o tamanho da fonte conforme necessário */
+    color: #f0f0f0; /* Cor do título */
+    margin: 0; /* Remove margens para evitar espaços indesejados */
 }
 
 nav .btn-formulario {
-    background-color: #555555;
-    color: #f0f0f0;
-    padding: 8px 16px;
+    color: #f0f0f0; 
     text-decoration: none;
-    border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s;
+    padding: 10px 15px; 
+    background-color: #555; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
 }
 
 nav .btn-formulario:hover {
-    background-color: #777777;
+    background-color: #777; 
 }
 
 .content {
+    max-width: 800px; 
+    margin: 20px auto; 
     padding: 20px;
-    text-align: center;
-    max-width: 800px;
-    margin-left: 20px; 
+    background-color: #ffffff; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
 }
 
-.content p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #f0f0f0;
-    text-align: justify;
+h1 {
+    font-size: 32px; 
+    color: #000000; 
+    margin-bottom: 20px; 
+    text-align: center; 
+}
+
+h2 {
+    font-size: 24px; 
+    color: #000000;
+    margin-top: 20px; 
+    margin-bottom: 10px; 
+    border-bottom: 2px solid #555; 
+    padding-bottom: 5px; 
+}
+
+p {
+    line-height: 1.6; 
+    margin: 10px 0; 
+    color: #000000; 
+}
+
+strong {
+    color: #4B4B4B; 
+    font-weight: bold; 
 }

@@ -23,29 +23,58 @@ async function storeUser (request, response) {
 }
 
 async function getUserProfile(request, response) {
-    const userId = request.params.id; // Obtém o ID do usuário da URL
-    const query = "SELECT name, email FROM users WHERE id = ?"; // Ajuste a query conforme necessário
+    const params = request.params.id; // Obtém o ID do usuário da URL
 
-    connection.query(query, [userId], (err, results) => {
-        if (err) {
-            console.error("Erro ao buscar perfil do usuário:", err);
-            return response.status(400).json({
-                success: false,
-                message: "Erro ao buscar perfil do usuário"
-            });
-        }
-        if (results.length > 0) {
-            return response.status(200).json(results[0]); // Retorna os dados do usuário
+    const query = "SELECT * FROM users WHERE id = ?"; // Ajuste a query conforme necessário
+
+    connection.query(query, params, (err, results) => {
+        if (results) {
+            response.status(201).json({
+                success: true,
+                message: "Sucesso",
+                params: params,
+                data: results
+            })
         } else {
-            return response.status(404).json({
+            response.status(400).json({
                 success: false,
-                message: "Usuário não encontrado"
-            });
+                message: "Ops, deu problema",
+                data: err
+            })
         }
-    });
+    })
+}
+
+async function editUser(request, response) {
+    const params = [
+        request.body.name,
+        request.body.email,
+        request.body.password,
+        request.body.id
+    ]
+
+    const query = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?"; // Ajuste a query conforme necessário
+
+    connection.query(query, params, (err, results) => {
+        if (results) {
+            response.status(201).json({
+                success: true,
+                message: "Sucesso",
+                params: params,
+                data: results
+            })
+        } else {
+            response.status(400).json({
+                success: false,
+                message: "Ops, deu problema",
+                data: err
+            })
+        }
+    })
 }
 
 module.exports = {
     storeUser ,
-    getUserProfile
+    getUserProfile,
+    editUser
 };

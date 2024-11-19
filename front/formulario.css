@@ -37,15 +37,15 @@ form {
     gap: 15px;
     width: 300px;
     color: #333;
-    margin: 0 auto; /* Adicionado para centralizar o formulário */
+    margin: 0 auto; 
 }
 
 form .question {
     margin-bottom: 15px;
-    display: none; /* Oculta todas as perguntas por padrão */
+    display: none; 
 }
 .question.active {
-    display: block; /* Exibe a pergunta ativa */
+    display: block; 
 }
 form p {
     margin: 0 0 10px;
@@ -72,23 +72,23 @@ form input[type="radio"]:focus {
 }
 
 .btn-primary {
-    background-color: #d3d3d3; /* Cor de fundo cinza claro */
-    color: black; /* Cor do texto (preto para contraste) */
-    border: none; /* Remove a borda padrão */
-    border-radius: 5px; /* Bordas arredondadas */
-    padding: 10px 20px; /* Espaçamento interno */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Cursor de mão ao passar o mouse */
-    transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
-    display: block; /* Faz o botão ocupar toda a largura disponível */
-    margin: 10px auto 0; /* Adiciona espaço acima do botão e centraliza */
+    background-color: #d3d3d3; 
+    color: black; 
+    border: none; 
+    border-radius: 5px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    display: block; 
+    margin: 10px auto 0; 
 }
 
 .btn-primary:hover {
-    background-color: #a9a9a9; /* Cor de fundo ao passar o mouse (cinza mais escuro) */
+    background-color: #a9a9a9; 
 }
 
 .btn-primary:disabled {
-    background-color: #cccccc; /* Cor de fundo quando desabilitado */
-    cursor: not-allowed; /* Cursor de bloqueio ao passar o mouse */
+    background-color: #cccccc; 
+    cursor: not-allowed; 
 }
