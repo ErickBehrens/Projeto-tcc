@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postar Dica</title>
+    <link rel="stylesheet" href="postar_dica.css">
+</head>
+<body>
+    <nav>
+        <h1>GameMind</h1>
+        <a href="home.html" class="btn-formulario">Home</a>
+        <a href="dica.html" class="btn-formulario">Dicas</a>
+    </nav>
+
+    <div class="container">
+        <h2>Postar Dica</h2>
+        <form id="dicaForm">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+
+            <button type="submit" class="submit">Postar Dica</button>
+        </form>
+        
+        <button class="account-button" onclick="window.location.href='dica.html'">Voltar para Dicas</button>
+        
+        <h3>Feed de Dicas</h3>
+        <div id="feedDicas" class="feed-container"></div>
+    </div>
+    
+    <script src="postar_dica.js"></script>
+</body>
+</html>

@@ -1,29 +1,22 @@
-// Importa o módulo Express.js
 const express = require('express');
-// Importa o módulo cors para habilitar o CORS (Cross-Origin Resource Sharing)
 const cors = require('cors');
 
-// Importa os routers de tarefas, usuários e login
 const taskRouter = require('./routes/taskRouter');
 const userRouter = require('./routes/userRouter');
 const loginRouter = require('./routes/loginRouter');
+const dicaRouter = require('./routes/dicaRouter'); // Importa o router de dicas
 
-// Cria uma instância do aplicativo Express.js
 const app = express();
 
-// Define a porta do servidor (3005 por padrão, mas pode ser alterada via variável de ambiente PORT)
 app.set('port', process.env.PORT || 3005);
-
-// Habilita o CORS para permitir requisições de diferentes origens
 app.use(cors());
-
-// Habilita o parsing de JSON para as requisições
 app.use(express.json());
 
-// Define as rotas para as APIs de tarefas, usuários e login
+// Define as rotas para as APIs
 app.use('/api', taskRouter);
 app.use('/api', userRouter);
 app.use('/api', loginRouter);
+app.use('/api/', dicaRouter); // Usa o router de dicas
 
-// Exporta o aplicativo Express.js para ser utilizado em outros módulos
+
 module.exports = app;
