@@ -101,6 +101,7 @@ button.submit:hover, .account-button:hover {
     border-radius: 5px; 
     max-height: 300px; 
     overflow-y: auto; 
+    gap: 1vh;
 }
 
 .feed-item {

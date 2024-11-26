@@ -1,35 +1,31 @@
 const connection = require('../config/db');
 
 // Função para postar uma nova dica
-async function postDica(req, res) {
-    const { titulo, descricao } = req.body; // Obtém os dados do corpo da requisição
+async function postDica(request, response) {
 
-    // Verifica se os campos estão presentes
-    if (!titulo || !descricao) {
-        return res.status(400).json({
-            success: false,
-            message: "Título e descrição são obrigatórios."
-        });
-    }
+    const params = Array(
+        request.body.titulo, 
+        request.body.descricao
+    );
 
     const query = "INSERT INTO dicas (titulo, descricao) VALUES (?, ?)";
-    const params = [titulo, descricao];
 
     connection.query(query, params, (err, results) => {
-        if (err) {
-            return res.status(400).json({
+        if (results) {
+            response.status(201).json({
+                success: true,
+                message: "Sucesso",
+                params: params,
+                data: results
+            })
+        } else {
+            response.status(400).json({
                 success: false,
-                message: "Erro ao inserir a dica",
-                error: err
-            });
+                message: "Ops, deu problema",
+                data: err
+            })
         }
-
-        return res.status(201).json({
-            success: true,
-            message: "Dica postada com sucesso!",
-            data: results
-        });
-    });
+    })
 }
 
 // Função para obter todas as dicas

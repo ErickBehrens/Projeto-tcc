@@ -1,6 +1,8 @@
+const dicaForm = document.getElementById('dicaForm');
+const feedDicas = document.getElementById('feedDicas');
+const form_dica = document.getElementById("form_dica")
+
 document.addEventListener('DOMContentLoaded', async () => {
-    const dicaForm = document.getElementById('dicaForm');
-    const feedDicas = document.getElementById('feedDicas');
 
     // Função para buscar dicas do servidor
     async function fetchDicas() {
@@ -37,29 +39,36 @@ document.addEventListener('DOMContentLoaded', async () => {
     fetchDicas();
 
     // Evento para enviar a dica
-    dicaForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        
-        const titulo = document.getElementById('titulo').value;
-        const descricao = document.getElementById('descricao').value;
+});
+dicaForm.addEventListener('click', async function postDica(event){
+    event.preventDefault();
+    
+    const titulo = document.getElementById('titulo').value;
+    const descricao = document.getElementById('descricao').value;
 
-        const response = await fetch('http://localhost:3001/api/dica/post', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ titulo, descricao })
-        });
+    let data = {
+        titulo,descricao
+    }
 
-        const content = await response.json();
-
-        if (content.success) {
-            // Limpa os campos do formulário
-            dicaForm.reset();
-            // Atualiza o feed
-            fetchDicas();
-        } else {
-            alert(content.message);
-        }
+    const response = await fetch('http://localhost:3001/api/post', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
     });
+
+    const content = await response.json();
+    console.log(content)
+
+    if (content.success) {
+        // Limpa os campos do formulário
+        form_dica.reset();
+        // Atualiza o feed
+        fetchDicas();
+        console.log('deu bom')
+    } else {
+        alert(content.message);
+        console.log('deu merda')
+    }
 });
